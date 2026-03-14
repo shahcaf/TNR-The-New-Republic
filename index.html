@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TNR - THE NEW REPUBLIC | Strength Through Unity</title>
+    <meta name="description" content="Official portfolio for TNR - The New Republic, a strategic military and government-themed Discord community.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #000000;
+            --bg-nav: rgba(10, 14, 26, 0.85);
+            --accent-cyan: #00d4ff;
+            --accent-blue: #0080ff;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(0, 212, 255, 0.2);
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-subheading: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--accent-blue), var(--accent-cyan));
+            border-radius: 5px;
+            border: 2px solid var(--bg-deep);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 50% 50%, #0a1329 0%, #000000 100%);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background Elements */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px);
+            transform-origin: top;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 50px; }
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
+            background: var(--bg-nav);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-subheading);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        /* Sections Layout */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 10%;
+            position: relative;
+        }
+
+        /* Hero Section */
+        #hero {
+            text-align: center;
+            background: transparent;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+        }
+
+        .subtitle {
+            font-family: var(--font-subheading);
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buttons */
+        .btn-discord {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--accent-cyan);
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn-discord:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .btn-discord::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-discord:hover::before {
+            left: 100%;
+        }
+
+        /* Glass Cards */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .glass-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-card:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 212, 255, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+
+        .card-title {
+            font-family: var(--font-subheading);
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section Specifics */
+        #contact {
+            text-align: center;
+        }
+
+        .footer-info {
+            margin-top: 5rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .credit {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .copyright {
+            font-family: var(--font-subheading);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+        }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+            .nav-links {
+                display: none; /* Hide for true mobile simplification */
+            }
+            h1 {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+                letter-spacing: 4px;
+            }
+            section {
+                padding: 80px 5%;
+            }
+        }
+
+        /* Intersection Observer Animation Helpers */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="bg-overlay"></div>
+
+    <nav>
+        <div class="logo">TNR</div>
+        <div class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>TNR - THE NEW REPUBLIC</h1>
+            <span class="subtitle">Strength Through Unity</span>
+            <a href="https://discord.gg/Em9yZ7m4aJ" target="_blank" class="btn-discord">
+                ENLIST NOW (DISCORD)
+            </a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="reveal">
+            <h2 style="font-family: var(--font-heading); margin-bottom: 3rem; text-align: center; letter-spacing: 2px;">STRATEGIC OPERATIONS</h2>
+        </div>
+        
+        <div class="card-container">
+            <div class="glass-card reveal">
+                <h3 class="card-title">Military Governance</h3>
+                <p>TNR operates on a foundation of disciplined leadership and structured hierarchy. We emulate advanced governmental systems to provide an immersive strategic experience for all members.</p>
+            </div>
+            
+            <div class="glass-card reveal">
+                <h3 class="card-title">Unified Community</h3>
+                <p>Built on the principle of "Strength Through Unity," our community fosters collaboration, tactical excellence, and a shared vision of a stronger tomorrow within the Discord ecosystem.</p>
+            </div>
+            
+            <div class="glass-card reveal">
+                <h3 class="card-title">Tactical Excellence</h3>
+                <p>From organized operations to civil administration, every aspect of The New Republic is designed for those who seek more than just a chat room—we offer a purpose.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="reveal" style="text-align: center;">
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1.5rem;">READY TO JOIN THE RANKS?</h2>
+            <p style="margin-bottom: 3rem; color: var(--text-dim); max-width: 600px; margin-left: auto; margin-right: auto;">
+                The Republic is always seeking driven individuals to contribute to our mission. Join our communications array and start your journey today.
+            </p>
+            
+            <a href="https://discord.gg/Em9yZ7m4aJ" target="_blank" class="btn-discord">
+                LAUNCH DISCORD PORTAL
+            </a>
+
+            <div class="footer-info">
+                <p class="copyright">&copy; 2026 TNR. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .glass-card').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Smooth Navbar Transition on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '0.8rem 10%';
+                nav.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.padding = '1.5rem 10%';
+                nav.style.backgroundColor = 'var(--bg-nav)';
+            }
+        });
+
+        // Optional: Simple pulse effect for buttons
+        setInterval(() => {
+            document.querySelectorAll('.btn-discord').forEach(btn => {
+                btn.style.boxShadow = '0 0 25px rgba(0, 212, 255, 0.4)';
+                setTimeout(() => {
+                    btn.style.boxShadow = '0 0 15px rgba(0, 212, 255, 0.2)';
+                }, 1000);
+            });
+        }, 2000);
+    </script>
+</body>
+</html>
